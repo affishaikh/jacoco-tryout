@@ -3,18 +3,13 @@ server:
 
 org:
   props:
-    api-key: original-key
-    new-api-key: ${org.props.api-key}/new-key
+    max-count: 5
 
-#
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        web: info
-#        http:
-#          codec:
-#            json: info
+
+
 spring:
   codec:
     max-in-memory-size: 4194304
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/new-game

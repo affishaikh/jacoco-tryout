@@ -1,16 +1,18 @@
 package com.example.webfluxtryouts.controller
 
-import com.example.webfluxtryouts.beans.MySampleObject
 import org.springframework.context.ApplicationContext
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
 
-class BeansController(val mySampleObject: MySampleObject, val applicationContext: ApplicationContext) {
+class BeansController(
+    val applicationContext: ApplicationContext,
+    val someComp: SomeComp
+) {
 
     @GetMapping("/beans")
     fun beans(): String {
-        val res = mySampleObject.name
-        mySampleObject.name = "BeansController"
-        return res
+        someComp.someValue = "2"
+        return someComp.someValue
     }
 
     @GetMapping("/getAllBeans")
